@@ -56,7 +56,8 @@ stages:
     condition: and(succeeded(), not(startsWith(variables['Build.SourceBranch'], 'refs/pull/')))
     displayName: Deploy
     pool:
-      vmImage: $(vmImageName)
+      # vmImage: $(vmImageName)
+      name: 'Azure'
     environment: 'cplemmpipelinesjavascriptdocker.demo'
     strategy:
       runOnce:
@@ -85,7 +86,8 @@ stages:
     displayName: Deploy Pull request
     condition: and(succeeded(), startsWith(variables['Build.SourceBranch'], 'refs/pull/'))
     pool:
-      vmImage: $(vmImageName)
+      # vmImage: $(vmImageName)
+      name: 'Azure'
 
     environment: 'cplemmpipelinesjavascriptdocker.$(k8sNamespaceForPR)'
     strategy:
