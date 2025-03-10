@@ -8,6 +8,11 @@ trigger:
 resources:
 - repo: self
 
+pool:
+  name: 'Azure'
+  demands:
+    - agent.name -equals 'agent1'
+
 variables:
 
   # Container registry service connection established during pipeline creation
@@ -19,7 +24,7 @@ variables:
   imagePullSecret: 'clemmacrd812-auth'
 
   # Agent VM image name
-  vmImageName: 'ubuntu-latest'
+  # vmImageName: 'ubuntu-latest'
 
   # Name of the new namespace being created to deploy the PR changes.
   k8sNamespaceForPR: 'review-app-$(System.PullRequest.PullRequestId)'
